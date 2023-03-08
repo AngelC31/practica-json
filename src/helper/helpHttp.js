@@ -1,0 +1,43 @@
+const helpHttp = () => {
+    const customFetch = (endpoint, options) => {
+        const defaultHeader={
+            accept: "application/json"
+        };
+        const controller=new AbortController();
+        options.signal=controller.signal;
+        options.method=options.method || "GET";
+        options.headers=options.headers?{...defaultHeader,...options.headers}:defaultHeader;
+        options.body= JSON.stringify(options.body)||false;
+        if(!options.body)delete options.body;
+
+        //comportamiento de las opciones
+        console.log(options);
+        setTimeout(()=>{
+            controller.abort();
+        }, 1000);
+
+        return fetch(endpoint, options)
+        .then((response)=>
+        response.ok
+        ? response.json()
+        :Promise.reject({
+            err: true,
+            status: response.status || "00",
+            statusText: response.statusText || "Ocurrio un error",
+        })
+        )
+        .catch((err)=>err);
+    };
+    const get = () => {}
+    const post = () => {}
+    const put = () => {}
+    const del = () => {}
+
+    return {
+        get,
+        post,
+        put,
+        del,
+    }
+}
+export default helpHttp;
