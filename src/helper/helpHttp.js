@@ -28,7 +28,7 @@ const helpHttp = () => {
         )
         .catch((err)=>err);
     };
-    const get = () => {}
+    const get = (url,option={}) =>customFetch(url,option);
     const post = () => {}
     const put = () => {}
     const del = () => {}
