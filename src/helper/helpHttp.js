@@ -16,7 +16,7 @@ const helpHttp = () => {
         console.log(options);
         setTimeout(()=>{
             controller.abort();
-        }, 3000);
+        }, 6000);
 
         return fetch(endpoint, options)
             .then((response)=>
