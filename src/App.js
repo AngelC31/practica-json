@@ -5,7 +5,6 @@ const App = () => {
   return (
     <div>
       <h1>Practica React</h1>
-      <CrudApp/>
       <CrudApi/>
     </div>
   )
